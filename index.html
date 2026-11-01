@@ -3,132 +3,732 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sistema de Gestión Estudiantil: organiza estudiantes, control académico y reportes en un solo lugar.">
-  <title>GestiónEstudiantil | Gestión académica sencilla</title>
+  <meta name="description" content="Gestión académica para dirección y coordinación: matrículas, calificaciones, asistencia y reportes en un solo ciclo. Prototipo visual con datos de ejemplo.">
+  <meta name="theme-color" content="#F6F8FC">
+  <title>GestiónEstudiantil | Gestión académica para dirección y coordinación</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
   <script src="js/app.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2Z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7Z"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16v-5"/><path d="M12 16V8"/><path d="M17 16v-9"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M17 7h4v4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  </svg>
+
   <header class="site-header" id="inicio">
-    <nav class="navbar container" aria-label="Navegación principal">
+    <div class="container header-inner">
       <a class="brand" href="#inicio" aria-label="GestiónEstudiantil, inicio">
-        <span class="brand-icon" aria-hidden="true">🎓</span>
-        <span>Gestión<span class="brand-accent">Estudiantil</span></span>
+        <span class="brand-mark" aria-hidden="true">GE</span>
+        <span class="brand-name">Gestión<em>Estudiantil</em></span>
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-      <div class="nav-links" id="navLinks">
-        <a class="nav-link active" href="#inicio">Inicio</a>
-        <a class="nav-link" href="#caracteristicas">Características</a>
+      <span class="prototype-chip">Prototipo</span>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
+        <svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg>
+        <span id="menuLabel">Menú</span>
+      </button>
+
+      <nav class="nav" id="navLinks" aria-label="Navegación principal">
+        <a class="nav-link" href="#caracteristicas">El sistema</a>
         <a class="nav-link" href="#como-funciona">Cómo funciona</a>
+        <a class="nav-link" href="#asi-se-ve">Así se ve</a>
         <a class="nav-link" href="#contacto">Contacto</a>
-        <button class="button button-small" data-action="login">Iniciar sesión</button>
-      </div>
-    </nav>
+        <button class="nav-login" type="button" data-action="login">Entrar</button>
+        <a class="button button-small" href="#asi-se-ve">
+          Ver el sistema
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+        </a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="hero-blob hero-blob-a"></span>
+        <span class="hero-blob hero-blob-b"></span>
+      </div>
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow">Sistema de Gestión Estudiantil</span>
-          <h1>Tu institución educativa <span>en un solo lugar</span></h1>
-          <p>Gestiona, organiza y da seguimiento a la información académica y administrativa de tus estudiantes de forma fácil, segura y eficiente.</p>
-          <div class="hero-actions">
-            <button class="button" data-action="start">Comenzar ahora <span aria-hidden="true">→</span></button>
-            <a class="button button-outline" href="#caracteristicas">Conocer más</a>
+          <p class="eyebrow" data-reveal style="--d:0ms">
+            <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
+            Ciclo académico 2025–2026
+          </p>
+          <h1 id="hero-title" data-reveal style="--d:70ms">Matrículas, calificaciones y asistencia, <em>en orden.</em></h1>
+          <p class="hero-lead" data-reveal style="--d:140ms">Un sistema para dirección, secretaría y docentes. Matrícula, notas y asistencia en el mismo ciclo, sin hojas de cálculo paralelas.</p>
+          <div class="hero-actions" data-reveal style="--d:210ms">
+            <a class="button" href="#asi-se-ve">
+              Ver el sistema
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </a>
+            <a class="button button-quiet" href="#contacto">Hablar con el equipo</a>
           </div>
-          <div class="trust-note"><span class="check">✓</span> Organización sencilla para tu centro educativo</div>
+          <div class="hero-roles" data-reveal style="--d:250ms" role="group" aria-label="Vista de ejemplo por rol">
+            <button class="role-tab" type="button" data-role="docentes" aria-pressed="true">
+              <svg class="icon" aria-hidden="true"><use href="#i-cap"></use></svg>
+              Para docentes
+            </button>
+            <button class="role-tab" type="button" data-role="direccion" aria-pressed="false">
+              <svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg>
+              Para dirección
+            </button>
+          </div>
+          <ul class="hero-points hero-role-view" data-role-view="docentes" data-reveal style="--d:280ms">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>Pase de lista en un toque</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-pencil"></use></svg>Notas por materia y período</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-file"></use></svg>Boletín por estudiante, al momento</li>
+          </ul>
+          <ul class="hero-points hero-role-view" data-role-view="direccion" hidden>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg>Estado del curso, de un vistazo</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>Alertas tempranas de asistencia</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-file"></use></svg>Reportes sin armar planillas</li>
+          </ul>
+          <p class="hero-note" data-reveal style="--d:340ms"><span aria-hidden="true"></span>Prototipo visual · datos de ejemplo</p>
         </div>
-        <div class="hero-visual" aria-label="Ilustración decorativa de estudiantes usando una computadora" role="img">
-          <div class="visual-orbit orbit-one"></div>
-          <div class="visual-orbit orbit-two"></div>
-          <div class="floating-card cap-card">🎓<small>Educación</small></div>
-          <div class="floating-card task-card"><span>✓</span> Matrículas<br><span>✓</span> Calificaciones<br><span>✓</span> Asistencia</div>
-          <div class="student student-one"><div class="hair"></div><div class="face"></div><div class="body yellow"></div></div>
-          <div class="student student-two"><div class="hair"></div><div class="face"></div><div class="body blue"></div></div>
-          <div class="student student-three"><div class="hair"></div><div class="face glasses"></div><div class="body pink"></div></div>
-          <div class="laptop"><div class="screen"><span>GE</span><small>Gestión académica</small></div><div class="keyboard"></div></div>
-          <div class="plant">🌿</div>
+
+        <div class="hero-visual" data-reveal style="--d:180ms">
+          <div class="float-chip chip-c" aria-hidden="true">
+            <span class="chip-icon"><svg class="icon"><use href="#i-users"></use></svg></span>
+            Estudiantes
+          </div>
+          <div class="float-chip chip-a" aria-hidden="true">
+            <span class="chip-icon"><svg class="icon"><use href="#i-pencil"></use></svg></span>
+            Calificaciones
+          </div>
+          <div class="float-chip chip-b" aria-hidden="true">
+            <span class="chip-icon"><svg class="icon"><use href="#i-chart"></use></svg></span>
+            Reportes
+          </div>
+
+          <figure class="hero-photo">
+            <div class="hero-photo-frame">
+              <!-- Foto: Unsplash · photo-1509062522246-3755977927d7 -->
+              <img src="assets/aula.jpg" alt="Docente frente a un grupo de estudiantes durante una clase." width="1200" height="747" fetchpriority="high">
+              <span class="hero-photo-shade" aria-hidden="true"></span>
+            </div>
+            <figcaption class="hero-photo-caption">
+              <svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg>
+              Docentes y estudiantes, en el mismo ciclo
+            </figcaption>
+          </figure>
+
+          <article class="artifact hero-card hero-role-view" data-role-view="direccion" hidden aria-labelledby="hero-card-title">
+            <header class="doc-head">
+              <div>
+                <h2 class="doc-title" id="hero-card-title">Boletín 3.º B</h2>
+                <p class="doc-meta">Dirección · Ciclo 2025–2026</p>
+              </div>
+              <span class="stamp">Ejemplo</span>
+            </header>
+
+            <table>
+              <caption class="sr-only">Resumen de ejemplo de tres estudiantes de 3.º B</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Estudiante</th>
+                  <th scope="col" class="num">Prom.</th>
+                  <th scope="col" class="num">Asist.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Ana Beltrán</th>
+                  <td class="num">8,5</td>
+                  <td class="num">96%</td>
+                </tr>
+                <tr>
+                  <th scope="row">Lucía Herrera</th>
+                  <td class="num">9,2</td>
+                  <td class="num">95%</td>
+                </tr>
+                <tr>
+                  <th scope="row">Tomás Aguilar</th>
+                  <td class="num">7,7</td>
+                  <td class="num">90%</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="doc-summary">
+              <div>
+                <span>Promedio</span>
+                <strong>7,9</strong>
+              </div>
+              <div>
+                <span>Asistencia</span>
+                <strong>90%</strong>
+              </div>
+            </div>
+          </article>
+
+          <article class="artifact hero-card hero-role-view" data-role-view="docentes" aria-labelledby="hero-card-docentes-title">
+            <header class="doc-head">
+              <div>
+                <h2 class="doc-title" id="hero-card-docentes-title">Notas de 3.º B</h2>
+                <p class="doc-meta">Vista de docente · Ciclo 2025–2026</p>
+              </div>
+              <span class="stamp">Ejemplo</span>
+            </header>
+
+            <table>
+              <caption class="sr-only">Notas de ejemplo por materia, vista de docente de 3.º B</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Materia</th>
+                  <th scope="col" class="num">Prom.</th>
+                  <th scope="col" class="num">Faltas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Matemática</th>
+                  <td class="num">7,9</td>
+                  <td class="num">3</td>
+                </tr>
+                <tr>
+                  <th scope="row">Lengua</th>
+                  <td class="num">8,3</td>
+                  <td class="num">2</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ciencias</th>
+                  <td class="num">7,6</td>
+                  <td class="num">4</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="doc-summary">
+              <div>
+                <span>Período</span>
+                <strong>1.º</strong>
+              </div>
+              <div>
+                <span>Materias</span>
+                <strong>3</strong>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section features-section" id="caracteristicas">
+    <section class="facts" aria-labelledby="facts-title">
       <div class="container">
-        <div class="section-heading">
-          <span class="section-kicker">CARACTERÍSTICAS PRINCIPALES</span>
-          <h2>Todo lo que necesitas en un solo sistema</h2>
-          <p>Simplifica la gestión de tu centro educativo con herramientas para estudiantes, docentes y administradores.</p>
+        <h2 class="sr-only" id="facts-title">Estado del proyecto</h2>
+        <dl class="facts-list">
+          <div>
+            <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-check-circle"></use></svg></span>
+            <div>
+              <dt>Qué es</dt>
+              <dd>Un prototipo visual de gestión académica para dirección, secretaría y docentes.</dd>
+            </div>
+          </div>
+          <div>
+            <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-lock"></use></svg></span>
+            <div>
+              <dt>Qué no es</dt>
+              <dd>Todavía no hay login real, base de datos ni módulos conectados.</dd>
+            </div>
+          </div>
+          <div>
+            <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-arrow"></use></svg></span>
+            <div>
+              <dt>Qué sigue</dt>
+              <dd>Matrícula, calificaciones, asistencia y reportes, en ese orden.</dd>
+            </div>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section features" id="caracteristicas" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="kicker">El sistema</p>
+          <h2 id="features-title">El ciclo académico, sin planillas paralelas.</h2>
+          <p>Cuatro piezas que dirección necesita ver juntas, no en cuatro archivos distintos.</p>
         </div>
-        <div class="feature-grid">
-          <article class="feature-card">
-            <div class="feature-icon icon-blue" aria-hidden="true">♟</div>
+
+        <div class="features-layout">
+          <article class="feature-primary" data-reveal>
+            <span class="icon-tile icon-tile-lg" aria-hidden="true"><svg class="icon"><use href="#i-cap"></use></svg></span>
             <h3>Gestión de estudiantes</h3>
-            <p>Registra, edita y consulta la información de tus estudiantes de forma organizada.</p>
+            <p>Matrícula, expediente y datos de contacto en una ficha por estudiante. Sin listas duplicadas ni versiones que nadie sabe cuál es la buena.</p>
+            <p class="feature-meta">Matrícula · Expediente · Contacto</p>
           </article>
-          <article class="feature-card">
-            <div class="feature-icon icon-green" aria-hidden="true">▤</div>
-            <h3>Control académico</h3>
-            <p>Organiza calificaciones, asistencia y asignaturas desde un mismo lugar.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon icon-purple" aria-hidden="true">▦</div>
-            <h3>Reportes</h3>
-            <p>Consulta resúmenes e indicadores para apoyar la toma de decisiones.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon icon-orange" aria-hidden="true">♢</div>
-            <h3>Acceso seguro</h3>
-            <p>Diseña permisos por tipo de usuario para proteger la información.</p>
-          </article>
+
+          <div class="feature-support">
+            <article data-reveal style="--d:80ms">
+              <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-book"></use></svg></span>
+              <div>
+                <h3>Control académico</h3>
+                <p>Calificaciones, asistencia y materias por curso y período. Todo queda en el mismo expediente.</p>
+                <p class="feature-meta">Notas · Asistencia · Materias</p>
+              </div>
+            </article>
+            <article data-reveal style="--d:150ms">
+              <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-chart"></use></svg></span>
+              <div>
+                <h3>Reportes</h3>
+                <p>Resúmenes de avance, asistencia y alertas para dirección. Sin armar la planilla a mano.</p>
+                <p class="feature-meta">Avance · Asistencia · Alertas</p>
+              </div>
+            </article>
+            <article data-reveal style="--d:220ms">
+              <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-shield"></use></svg></span>
+              <div>
+                <h3>Acceso por rol</h3>
+                <p>Dirección, secretaría y docentes ven lo que les corresponde. Cada cambio queda registrado.</p>
+                <p class="feature-meta">Dirección · Secretaría · Docentes</p>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section how-section" id="como-funciona">
+    <section class="section steps" id="como-funciona" aria-labelledby="steps-title">
       <div class="container">
-        <div class="section-heading">
-          <span class="section-kicker">CÓMO FUNCIONA</span>
-          <h2>Es fácil, rápido y efectivo</h2>
-          <p>Un flujo sencillo para empezar a organizar la gestión estudiantil.</p>
+        <div class="section-head" data-reveal>
+          <p class="kicker">Cómo funciona</p>
+          <h2 id="steps-title">Del archivo suelto al ciclo ordenado.</h2>
+          <p>Tres pasos. Sin migraciones eternas ni una semana de capacitación.</p>
         </div>
-        <div class="steps-grid">
-          <article class="step-card"><span class="step-number step-blue">1</span><div class="step-icon">♙</div><h3>Inicia sesión</h3><p>Accede con tus credenciales de usuario.</p></article>
-          <article class="step-card"><span class="step-number step-green">2</span><div class="step-icon">▤</div><h3>Registra la información</h3><p>Ingresa datos de estudiantes, docentes y asignaturas.</p></article>
-          <article class="step-card"><span class="step-number step-purple">3</span><div class="step-icon">▥</div><h3>Gestiona y da seguimiento</h3><p>Consulta calificaciones, asistencia y otros datos.</p></article>
-          <article class="step-card"><span class="step-number step-orange">4</span><div class="step-icon">▧</div><h3>Genera reportes</h3><p>Visualiza información resumida para tu institución.</p></article>
+
+        <ol class="steps-list" data-reveal>
+          <li>
+            <div class="step-top">
+              <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-upload"></use></svg></span>
+              <span class="step-number">01</span>
+            </div>
+            <h3>Importa la matrícula</h3>
+            <p>Desde una planilla existente o carga manual, curso por curso.</p>
+            <p class="step-output"><span>Salida</span>Lista de clase.</p>
+          </li>
+          <li style="--d:120ms">
+            <div class="step-top">
+              <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-pencil"></use></svg></span>
+              <span class="step-number">02</span>
+            </div>
+            <h3>Registra notas y asistencia</h3>
+            <p>Por materia, por período y por día. Una sola fuente para todo el equipo.</p>
+            <p class="step-output"><span>Salida</span>Boletín por estudiante.</p>
+          </li>
+          <li style="--d:240ms">
+            <div class="step-top">
+              <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-file"></use></svg></span>
+              <span class="step-number">03</span>
+            </div>
+            <h3>Revisa el ciclo</h3>
+            <p>Reportes de avance, asistencia y alertas para dirección.</p>
+            <p class="step-output"><span>Salida</span>Resumen del curso.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section see" id="asi-se-ve" aria-labelledby="see-title">
+      <div class="container see-grid">
+        <div class="see-copy">
+          <p class="kicker" data-reveal>Así se ve</p>
+          <h2 id="see-title" data-reveal style="--d:60ms">Los datos del curso, en el mismo lugar.</h2>
+          <p data-reveal style="--d:120ms">Cambia entre matrícula, calificaciones y asistencia. Son datos de ejemplo: el sistema real todavía no está conectado.</p>
+
+          <ul class="annotations" data-reveal style="--d:180ms">
+            <li>
+              <svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg>
+              <div>
+                <strong>Matrícula</strong>
+                <span>Una ficha por estudiante, con curso y contacto.</span>
+              </div>
+            </li>
+            <li>
+              <svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg>
+              <div>
+                <strong>Calificaciones</strong>
+                <span>Notas por materia y período, sin archivos sueltos.</span>
+              </div>
+            </li>
+            <li>
+              <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
+              <div>
+                <strong>Asistencia</strong>
+                <span>Por día y por curso, con alertas cuando hace falta.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="see-panel" data-reveal style="--d:120ms">
+          <div class="tabs" role="tablist" aria-label="Ejemplos del sistema">
+            <button class="tab" id="tab-matricula" type="button" role="tab" aria-selected="true" aria-controls="panel-matricula" tabindex="0">
+              <svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg>
+              Matrícula
+            </button>
+            <button class="tab" id="tab-notas" type="button" role="tab" aria-selected="false" aria-controls="panel-notas" tabindex="-1">
+              <svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg>
+              Calificaciones
+            </button>
+            <button class="tab" id="tab-asistencia" type="button" role="tab" aria-selected="false" aria-controls="panel-asistencia" tabindex="-1">
+              <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
+              Asistencia
+            </button>
+          </div>
+
+          <div class="tab-panels">
+            <figure class="artifact tab-panel" id="panel-matricula" role="tabpanel" aria-labelledby="tab-matricula">
+              <header class="doc-head">
+                <div>
+                  <h3 class="doc-title">Matrícula del curso</h3>
+                  <p class="doc-meta">3.º B · Ingreso 2026</p>
+                </div>
+                <span class="stamp">Ejemplo</span>
+              </header>
+
+              <table>
+                <caption class="sr-only">Matrícula de ejemplo de seis estudiantes de 3.º B</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Estudiante</th>
+                    <th scope="col" class="col-optional">Curso</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col" class="num col-optional">Ingreso</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Ana Beltrán</th>
+                    <td class="col-optional">3.º B</td>
+                    <td><span class="status status-ok">Matriculada</span></td>
+                    <td class="num col-optional">04 mar</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Diego Fuentes</th>
+                    <td class="col-optional">3.º B</td>
+                    <td><span class="status status-ok">Matriculado</span></td>
+                    <td class="num col-optional">04 mar</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Lucía Herrera</th>
+                    <td class="col-optional">3.º B</td>
+                    <td><span class="status status-ok">Matriculada</span></td>
+                    <td class="num col-optional">05 mar</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Mateo Rivas</th>
+                    <td class="col-optional">3.º B</td>
+                    <td><span class="status status-alert">Pendiente</span></td>
+                    <td class="num col-optional">06 mar</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sofía Paredes</th>
+                    <td class="col-optional">3.º B</td>
+                    <td><span class="status status-ok">Matriculada</span></td>
+                    <td class="num col-optional">06 mar</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tomás Aguilar</th>
+                    <td class="col-optional">3.º B</td>
+                    <td><span class="status status-alert">Pendiente</span></td>
+                    <td class="num col-optional">07 mar</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="doc-summary">
+                <div>
+                  <span>Matriculados</span>
+                  <strong data-count="4">4</strong>
+                </div>
+                <div>
+                  <span>Pendientes</span>
+                  <strong data-count="2">2</strong>
+                </div>
+                <div>
+                  <span>Total del curso</span>
+                  <strong>6</strong>
+                </div>
+              </div>
+              <figcaption class="artifact-note">Datos de ejemplo. El sistema real todavía no está conectado.</figcaption>
+            </figure>
+
+            <figure class="artifact tab-panel" id="panel-notas" role="tabpanel" aria-labelledby="tab-notas" hidden>
+              <header class="doc-head">
+                <div>
+                  <h3 class="doc-title">Boletín de calificaciones</h3>
+                  <p class="doc-meta">3.º B · Ciclo 2025–2026</p>
+                </div>
+                <span class="stamp">Ejemplo</span>
+              </header>
+
+              <table>
+                <caption class="sr-only">Calificaciones de ejemplo de seis estudiantes de 3.º B</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Estudiante</th>
+                    <th scope="col" class="num">Matemática</th>
+                    <th scope="col" class="num col-optional">Lengua</th>
+                    <th scope="col" class="num col-optional">Ciencias</th>
+                    <th scope="col" class="num">Promedio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Ana Beltrán</th>
+                    <td class="num">8,5</td>
+                    <td class="num col-optional">9,0</td>
+                    <td class="num col-optional">8,0</td>
+                    <td class="num">8,5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Diego Fuentes</th>
+                    <td class="num">6,8</td>
+                    <td class="num col-optional">7,5</td>
+                    <td class="num col-optional">7,0</td>
+                    <td class="num">7,1</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Lucía Herrera</th>
+                    <td class="num">9,2</td>
+                    <td class="num col-optional">9,5</td>
+                    <td class="num col-optional">8,8</td>
+                    <td class="num">9,2</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Mateo Rivas</th>
+                    <td class="num">5,9</td>
+                    <td class="num col-optional">6,4</td>
+                    <td class="num col-optional">6,8</td>
+                    <td class="num">6,4</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sofía Paredes</th>
+                    <td class="num">8,8</td>
+                    <td class="num col-optional">8,2</td>
+                    <td class="num col-optional">9,1</td>
+                    <td class="num">8,7</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tomás Aguilar</th>
+                    <td class="num">7,4</td>
+                    <td class="num col-optional">8,0</td>
+                    <td class="num col-optional">7,6</td>
+                    <td class="num">7,7</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="doc-summary">
+                <div>
+                  <span>Promedio del curso</span>
+                  <strong data-count="7.9" data-decimals="1">7,9</strong>
+                </div>
+                <div>
+                  <span>En riesgo</span>
+                  <strong data-count="1">1</strong>
+                </div>
+                <div>
+                  <span>Materias</span>
+                  <strong>3</strong>
+                </div>
+              </div>
+              <figcaption class="artifact-note">Datos de ejemplo. El sistema real todavía no está conectado.</figcaption>
+            </figure>
+
+            <figure class="artifact tab-panel" id="panel-asistencia" role="tabpanel" aria-labelledby="tab-asistencia" hidden>
+              <header class="doc-head">
+                <div>
+                  <h3 class="doc-title">Reporte de asistencia</h3>
+                  <p class="doc-meta">3.º B · Marzo 2026</p>
+                </div>
+                <span class="stamp">Ejemplo</span>
+              </header>
+
+              <table>
+                <caption class="sr-only">Reporte de asistencia de ejemplo de seis estudiantes de 3.º B</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Estudiante</th>
+                    <th scope="col" class="num col-optional">Días</th>
+                    <th scope="col" class="num">Asistencia</th>
+                    <th scope="col">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Ana Beltrán</th>
+                    <td class="num col-optional">21</td>
+                    <td class="num">
+                      <span class="attendance"><span class="bar"><span style="--value:96%"></span></span>96%</span>
+                    </td>
+                    <td><span class="status status-ok">Al día</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Diego Fuentes</th>
+                    <td class="num col-optional">21</td>
+                    <td class="num">
+                      <span class="attendance"><span class="bar"><span style="--value:86%"></span></span>86%</span>
+                    </td>
+                    <td><span class="status status-alert">En alerta</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Lucía Herrera</th>
+                    <td class="num col-optional">20</td>
+                    <td class="num">
+                      <span class="attendance"><span class="bar"><span style="--value:95%"></span></span>95%</span>
+                    </td>
+                    <td><span class="status status-ok">Al día</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Mateo Rivas</th>
+                    <td class="num col-optional">21</td>
+                    <td class="num">
+                      <span class="attendance"><span class="bar"><span style="--value:81%"></span></span>81%</span>
+                    </td>
+                    <td><span class="status status-alert">En alerta</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sofía Paredes</th>
+                    <td class="num col-optional">19</td>
+                    <td class="num">
+                      <span class="attendance"><span class="bar"><span style="--value:94%"></span></span>94%</span>
+                    </td>
+                    <td><span class="status status-ok">Al día</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tomás Aguilar</th>
+                    <td class="num col-optional">20</td>
+                    <td class="num">
+                      <span class="attendance"><span class="bar"><span style="--value:90%"></span></span>90%</span>
+                    </td>
+                    <td><span class="status status-ok">Al día</span></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="doc-summary">
+                <div>
+                  <span>Asistencia del curso</span>
+                  <strong data-count="90" data-suffix="%">90%</strong>
+                </div>
+                <div>
+                  <span>En alerta</span>
+                  <strong data-count="2">2</strong>
+                </div>
+                <div>
+                  <span>Días registrados</span>
+                  <strong>21</strong>
+                </div>
+              </div>
+              <figcaption class="artifact-note">Datos de ejemplo. El sistema real todavía no está conectado.</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="cta-wrap">
+    <section class="cta" aria-labelledby="cta-title">
       <div class="container">
         <div class="cta-panel">
-          <div class="cta-cap" aria-hidden="true">🎓</div>
-          <div><h2>Lleva la gestión de tu centro educativo al siguiente nivel</h2><p>Más organización, menos trabajo manual, mejores resultados.</p></div>
-          <button class="button button-light" data-action="start">Comenzar ahora</button>
+          <span class="cta-glow" aria-hidden="true"></span>
+          <div class="cta-copy" data-reveal>
+            <p class="kicker kicker-light">Siguiente paso</p>
+            <h2 id="cta-title">Docentes y dirección, el mismo ciclo. Veinte minutos para recorrerlo.</h2>
+            <p>Recorremos el prototipo con los datos de ejemplo de 3.º B —estudiantes, notas y asistencia— y decides si seguir. Sin instalar nada y sin compromiso.</p>
+            <div class="cta-chips">
+              <span class="cta-chip">
+                <svg class="icon" aria-hidden="true"><use href="#i-cap"></use></svg>
+                Para docentes
+              </span>
+              <span class="cta-chip">
+                <svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg>
+                Para dirección
+              </span>
+            </div>
+            <div class="cta-actions">
+              <button class="button button-light" type="button" data-action="contact">
+                Hablar con el equipo
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+              </button>
+              <span class="cta-note">
+                <svg class="icon" aria-hidden="true"><use href="#i-check-circle"></use></svg>
+                Datos de ejemplo
+              </span>
+            </div>
+          </div>
+
+          <figure class="cta-photo" data-reveal style="--d:140ms">
+            <!-- Foto: Unsplash · photo-1571260899304-425eee4c7efc -->
+            <img src="assets/estudiantes.jpg" alt="Estudiantes de secundaria trabajando juntos en clase." width="1200" height="800" loading="lazy">
+            <figcaption>Docentes y estudiantes en el mismo ciclo</figcaption>
+          </figure>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer" id="contacto">
-    <div class="container">
-      <div class="footer-main">
-        <a class="brand footer-brand" href="#inicio"><span class="brand-icon" aria-hidden="true">🎓</span><span>GestiónEstudiantil<small>Educación organizada, futuro asegurado.</small></span></a>
-        <div class="footer-links"><a href="#inicio">Inicio</a><a href="#caracteristicas">Características</a><a href="#como-funciona">Cómo funciona</a><a href="mailto:info@gestionestudiantil.example">Contacto</a></div>
+    <div class="container footer-main">
+      <div class="footer-brand-block">
+        <a class="brand" href="#inicio" aria-label="GestiónEstudiantil, inicio">
+          <span class="brand-mark" aria-hidden="true">GE</span>
+          <span class="brand-name">Gestión<em>Estudiantil</em></span>
+        </a>
+        <p>Prototipo visual de gestión académica. Sin backend ni datos reales.</p>
+        <button class="text-link" type="button" data-action="contact">
+          Escribir al equipo
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+        </button>
       </div>
-      <div class="footer-bottom">© <span id="currentYear"></span> GestiónEstudiantil. Proyecto demostrativo para fines educativos.</div>
+
+      <nav class="footer-links" aria-label="Pie de página">
+        <a href="#caracteristicas">El sistema</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#asi-se-ve">Así se ve</a>
+        <button type="button" data-action="contact">Contacto</button>
+      </nav>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>© <span id="currentYear">2026</span> GestiónEstudiantil</span>
+      <span>Proyecto demostrativo · datos de ejemplo</span>
+      <span>Fotografías: Unsplash</span>
     </div>
   </footer>
 
-  <dialog class="demo-dialog" id="demoDialog">
+  <dialog class="demo-dialog" id="demoDialog" aria-labelledby="dialogTitle" aria-describedby="dialogMessage">
     <form method="dialog">
-      <button class="dialog-close" aria-label="Cerrar ventana">×</button>
-      <div class="dialog-icon">🎓</div>
-      <h2 id="dialogTitle">¡Bienvenido!</h2>
-      <p id="dialogMessage">Esta es una demostración visual. El inicio de sesión y el registro todavía no están conectados a un servidor.</p>
-      <button class="button" value="close">Entendido</button>
+      <button class="dialog-close" value="close" aria-label="Cerrar">
+        <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
+      </button>
+      <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-lock"></use></svg></span>
+      <h2 id="dialogTitle">Entrar</h2>
+      <p id="dialogMessage">El acceso forma parte del prototipo: todavía no hay autenticación ni datos reales.</p>
+      <button class="button" value="close" autofocus>Entendido</button>
     </form>
   </dialog>
 </body>
